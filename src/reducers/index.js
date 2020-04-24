@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
-import authedUser from '../reducers/users'
-import users from '../reducers/users'
-import polls from '../reducers/polls'
+import authedUser from './authedUser'
+import users from './users'
+import polls from './polls'
 export default combineReducers({
     authedUser,
     users,
