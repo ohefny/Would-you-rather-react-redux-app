@@ -1,22 +1,44 @@
+import { getQuestions, createQuestion,answerQuestion } from "../api";
+
 const RECEIVE_POLLS = "RECEIVE_POLLS";
-const CREATE_POLL = "CREATE_POLL"; //todo see how we did create tweet in previous project
+const ADD_POLL = "ADD_POLL"; //todo see how we did create tweet in previous project
 const ANSWER_POLL = "ANSWER_POLL"; // todo how we did tweet reply
 
-export function receivePolls(polls) {
+function receivePolls(polls) {
   return {
     type: RECEIVE_POLLS,
     polls,
   };
 }
-export function createPoll(poll) {
+function addPoll(poll) {
   return {
-    type: CREATE_POLL,
+    type: ADD_POLL,
     poll,
   };
 }
-export function answerPoll(pollID, answerID) {
+function answerPoll(pollID, answer) {
   return {
     type: ANSWER_POLL,
-    data: { pollID, answerID },
+    data: { pollID, answer},
   };
+}
+export function handleReceivePolls(){
+    return (dispatch)=>{
+        getQuestions.then((polls)=>dispatch(receivePolls(polls)))
+    }
+}
+export function handleCreatePoll(optionOneText,optionTwoText){  
+    return (dispatch,getState)=>{
+        const {authedUser} = getState()
+        createQuestion({authedUser,optionOneText,optionTwoText})
+        .then((poll)=>dispatch(addPoll(poll)))
+    }
+
+}
+export function handleAnswerPoll(pollID,answerText){
+    return (dispatch,getState)=>{
+        const {authedUser} = getState()
+        answerQuestion({authedUser,pollID,answerText})
+        .then(()=>dispatch(answerPoll(pollID,answerText)))
+    }
 }
