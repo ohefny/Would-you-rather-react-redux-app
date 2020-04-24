@@ -1,6 +1,6 @@
 import { getUsers } from "../api";
 
-const RECEIVE_USERS = "RECEIVE_USERS";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 
 function receiveUsers(users) {
   return {
@@ -9,7 +9,7 @@ function receiveUsers(users) {
   };
 }
 
-export default function handleReceiveUsers() {
+export function handleReceiveUsers() {
   return (dispatch) => {
     getUsers.then((users) => dispatch(receiveUsers(users)));
   };

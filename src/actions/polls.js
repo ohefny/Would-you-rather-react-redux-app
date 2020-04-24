@@ -1,8 +1,8 @@
 import { getQuestions, createQuestion,answerQuestion } from "../api";
 
-const RECEIVE_POLLS = "RECEIVE_POLLS";
-const ADD_POLL = "ADD_POLL"; //todo see how we did create tweet in previous project
-const ANSWER_POLL = "ANSWER_POLL"; // todo how we did tweet reply
+export const RECEIVE_POLLS = "RECEIVE_POLLS";
+export const ADD_POLL = "ADD_POLL"; //todo see how we did create tweet in previous project
+export const ANSWER_POLL = "ANSWER_POLL"; // todo how we did tweet reply
 
 function receivePolls(polls) {
   return {
