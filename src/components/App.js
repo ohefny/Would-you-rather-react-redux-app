@@ -22,8 +22,7 @@ class App extends Component {
   }
   handleSubmit=(event)=> {
     event.preventDefault();
-    console.log(this)
-    this.props.dispatch(handleAnswerPoll(this.pollID.value,this.answer.value))
+    this.props.dispatch(handleCreatePoll(this.optionOne.value,this.optionTwo.value))
     //console.log(`answer ${this.answer.value} pollID ${this.pollID.value}`)
   }
   render() {
@@ -31,12 +30,12 @@ class App extends Component {
       <div>
         <form onSubmit={this.handleSubmit}> 
           <label>
-            Answer:
-            <input type="text" name="question" ref={(input) => this.answer = input} />
+            Option One:
+            <input type="text" name="optionOne" ref={(input) => this.optionOne = input} />
           </label>
           <label>
-            Poll:
-            <input type="text" name="poll" ref={(input) => this.pollID = input} />
+            Option Two:
+            <input type="text" name="optionTwo" ref={(input) => this.optionTwo = input} />
           </label>
           <input type="submit" value="Submit" />
         </form>

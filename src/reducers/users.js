@@ -1,5 +1,5 @@
 import { RECEIVE_USERS } from "../actions/users";
-import { ANSWER_POLL } from "../actions/polls";
+import { ANSWER_POLL, ADD_POLL } from "../actions/polls";
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -8,18 +8,28 @@ export default function users(state = {}, action) {
         ...state,
         ...action.users,
       };
-    case ANSWER_POLL: {
+    case ANSWER_POLL:
+    const {answer}=action
       return {
         ...state,
-        [action.userID]: {
-          ...state[action.userID],
+        [answer.userID]: {
+          ...state[answer.userID],
           answers: {
-            ...state[action.userID].answers,
-            [action.pollID]: action.answerOption,
+            ...state[answer.userID].answers,
+            [answer.pollID]: answer.answerOption,
           },
         }, //add answer to user_answers
       };
-    }
+    case ADD_POLL:
+     const{poll}=action
+      return {
+        ...state,
+        [poll.author]: {
+          ...state[poll.author],
+          'questions': state[poll.author]['questions'].concat([poll.id])
+        },
+      };
+
     default:
       return state;
   }

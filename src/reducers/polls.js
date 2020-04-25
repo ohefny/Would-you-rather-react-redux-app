@@ -12,10 +12,11 @@ export default function polls(state = {}, action) {
     }
     case ANSWER_POLL:{ //extract all question info and replace questioOption votes and text
         const question={}
-        question[action.answerOption]={...state[action.pollID][action.answerOption],votes:state[action.pollID][action.answerOption].votes.concat([action.userID])}
+        const {answer}=action
+        question[answer.answerOption]={...state[answer.pollID][answer.answerOption],votes:state[answer.pollID][answer.answerOption].votes.concat([answer.userID])}
         return{
             ...state,
-            [action.pollID]:{...state[action.pollID],...question},
+            [answer.pollID]:{...state[answer.pollID],...question},
         }
     }
     default:

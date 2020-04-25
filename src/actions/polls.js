@@ -19,7 +19,7 @@ function addPoll(poll) {
 function answerPoll(pollID, answerOption, userID) {
   return {
     type: ANSWER_POLL,
-    ...{ pollID, answerOption, userID },
+    answer:{ pollID, answerOption, userID },
   };
 }
 export function handleReceivePolls() {
@@ -30,8 +30,8 @@ export function handleReceivePolls() {
 export function handleCreatePoll(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
-    createQuestion({ authedUser, optionOneText, optionTwoText }).then((poll) =>
-      dispatch(addPoll(poll))
+    createQuestion({ author:authedUser, optionOneText, optionTwoText }).then((poll) =>
+      dispatch(addPoll(poll,authedUser))
     );
   };
 }
