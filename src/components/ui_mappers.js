@@ -23,7 +23,8 @@ export function getPollStatsUIModel(poll, authedUser) {
   };
 }
 export function getLeaderBoardUIModel(users) {
-  const sortedUsers = [...users].sort((u1, u2) => getScore(u2) - getScore(u1));
+  const usersArr=Object.keys(users).map((key)=>users[key])
+  const sortedUsers = usersArr.sort((u1, u2) => getScore(u2) - getScore(u1));
   return sortedUsers.map(mapUserToLeader);
 }
 
@@ -31,10 +32,10 @@ function mapUserToLeader({ name, avatarURL, answers, questions }) {
   return {
     name,
     avatarURL,
-    score: answers.length+questions.length,
-    answersCount: answers.length,
+    score: Object.keys(answers).length+questions.length,
+    answersCount: Object.keys(answers).length,
     questionsCount: questions.length,
   };
 }
 
-const getScore = (user) => user.questions.length + user.answers.length;
+const getScore = (user) => user.questions.length + Object.keys(user.answers).length;
