@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PollContent from "./PollContent"
+import PollPreview from "./PollPreview"
+import PollStats from "./PollStats"
+
 class PollContainer extends Component {
   render() {
     return (
@@ -18,7 +21,7 @@ class PollContainer extends Component {
   getContent = () => {
     switch (this.props.content) {
       case RESULT:
-        return <PollResults id={this.props.id}/>; //don't pass the poll rather navigate to it using the router
+        return <PollStats id={this.props.id}/>; 
       case PREVIEW:
         return <PollPreview id={this.props.id}/>;
       default:
