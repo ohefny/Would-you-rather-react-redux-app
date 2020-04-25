@@ -5,7 +5,7 @@ export function getUsers(){
     return _getUsers()
 }
 export function getQuestions(){
-    return _getQuestions
+    return _getQuestions()
 }
 export function createQuestion(questionData){  //{ optionOneText, optionTwoText, author }
     return _saveQuestion(questionData)

@@ -1,4 +1,4 @@
-import { getQuestions, createQuestion,answerQuestion } from "../api";
+import { getQuestions, createQuestion, answerQuestion } from "../api";
 
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
 export const ADD_POLL = "ADD_POLL"; //todo see how we did create tweet in previous project
@@ -16,29 +16,30 @@ function addPoll(poll) {
     poll,
   };
 }
-function answerPoll(pollID, answer) {
+function answerPoll(pollID, answerOption, userID) {
   return {
     type: ANSWER_POLL,
-    data: { pollID, answer},
+    ...{ pollID, answerOption, userID },
   };
 }
-export function handleReceivePolls(){
-    return (dispatch)=>{
-        getQuestions.then((polls)=>dispatch(receivePolls(polls)))
-    }
+export function handleReceivePolls() {
+  return (dispatch) => {
+    getQuestions().then((polls) => dispatch(receivePolls(polls)));
+  };
 }
-export function handleCreatePoll(optionOneText,optionTwoText){  
-    return (dispatch,getState)=>{
-        const {authedUser} = getState()
-        createQuestion({authedUser,optionOneText,optionTwoText})
-        .then((poll)=>dispatch(addPoll(poll)))
-    }
-
+export function handleCreatePoll(optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    createQuestion({ authedUser, optionOneText, optionTwoText }).then((poll) =>
+      dispatch(addPoll(poll))
+    );
+  };
 }
-export function handleAnswerPoll(pollID,answerText){
-    return (dispatch,getState)=>{
-        const {authedUser} = getState()
-        answerQuestion({authedUser,pollID,answerText})
-        .then(()=>dispatch(answerPoll(pollID,answerText)))
-    }
+export function handleAnswerPoll(pollID, answerOption) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    answerQuestion({ authedUser, qid: pollID, answer: answerOption }).then(() =>
+      dispatch(answerPoll(pollID, answerOption, authedUser))
+    );
+  };
 }
