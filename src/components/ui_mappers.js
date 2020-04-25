@@ -31,6 +31,16 @@ export function getLeaderBoardUIModel(users) {
   return sortedUsers.map(mapUserToLeader);
 }
 
+export function getPreviewUIMode(poll){
+  const words=poll.optionOne.split(" ")
+  words.pop()
+  words.shift()
+  return {
+    title:"Would you rather",
+    preview: `..${words.join(" ")}..`
+  }
+}
+
 function mapUserToLeader({ name, avatarURL, answers, questions }) {
   return {
     name,
@@ -43,3 +53,6 @@ function mapUserToLeader({ name, avatarURL, answers, questions }) {
 
 const getScore = (user) =>
   user.questions.length + Object.keys(user.answers).length;
+
+
+  
