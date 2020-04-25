@@ -7,7 +7,7 @@ import {
   handleAnswerPoll,
 } from "../actions/polls";
 import { setAuthedUser } from "../actions/authedUser";
-import {getLeaderBoardUIModel} from "./ui_mappers"
+import {getLeaderBoardUIModel, getPollStatsUIModel} from "./ui_mappers"
 class App extends Component {
   constructor() {
     super();
@@ -44,7 +44,7 @@ class App extends Component {
   showPollStats=(event) =>{
     event.preventDefault();
     console.group("Poll Stats");
-    console.log(getLeaderBoardUIModel(this.props.users))
+    console.log(getPollStatsUIModel(this.props.polls["8xf0y6ziyjabvozdd253nd"],this.props.authedUser))
     console.groupEnd();
   }
   render() {
@@ -93,6 +93,8 @@ class App extends Component {
           </form>
         </div>
         <button onClick={this.showLeaderBoard}>Show Leaders</button>
+        <button onClick={this.showPollStats}>Show Poll Stats</button>
+
       </div>
     );
   }
