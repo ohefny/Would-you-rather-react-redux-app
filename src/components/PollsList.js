@@ -6,7 +6,7 @@ export default class PollsList extends Component {
     return (
       <ul>
         {this.props.polls.map((poll) => (
-          <li><PollContainer id={poll.id} content={PREVIEW}/></li> //todo make proper mapping
+          <li key={poll.id}><PollContainer id={poll.id} content={PREVIEW}/></li> //todo make proper mapping
         ))}
       </ul>
     );

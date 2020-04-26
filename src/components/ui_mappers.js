@@ -26,21 +26,26 @@ export function getPollStatsUIModel(poll, authedUser) {
   };
 }
 export function getLeaderBoardUIModel(users) {
-  const usersArr = Object.keys(users).map((key) => users[key]);
+  const usersArr = objectToArray(users);
   const sortedUsers = usersArr.sort((u1, u2) => getScore(u2) - getScore(u1));
   return sortedUsers.map(mapUserToLeader);
 }
 
-export function getPreviewUIMode(poll){
-  const words=poll.optionOne.split(" ")
-  words.pop()
-  words.shift()
-  return {
-    title:"Would you rather",
-    preview: `..${words.join(" ")}..`
+export function getPreviewUIModel(poll) {
+  console.log(poll);
+  const words = poll.optionOne.text.split(" ");
+  if (words.length > 2) {
+    words.pop();
+    words.shift();
   }
+  return {
+    title: "Would you rather",
+    preview: `..${words.join(" ")}..`,
+  };
 }
-
+export function objectToArray(obj) {
+  return Object.keys(obj).map((key) => obj[key]);
+}
 function mapUserToLeader({ name, avatarURL, answers, questions }) {
   return {
     name,
@@ -53,6 +58,3 @@ function mapUserToLeader({ name, avatarURL, answers, questions }) {
 
 const getScore = (user) =>
   user.questions.length + Object.keys(user.answers).length;
-
-
-  
