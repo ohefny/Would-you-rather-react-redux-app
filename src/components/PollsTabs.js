@@ -9,7 +9,6 @@ class PollsTabs extends Component {
   }
   updateContent = (content) => {
       this.setState({ content })
-      console.log('tab clicked')
     };
 
   render() {
@@ -35,11 +34,12 @@ class PollsTabs extends Component {
 const ANSWERED = 0;
 const NOT_ANSWERED = 1;
 function mapStateToProps({ authedUser, users, polls }) {
+  //const myPolls = users[authedUser].questions;
   const answeredPolls = Object.keys(users[authedUser].answers).map(
     (id) => polls[id]
   );
   const notAnsweredPolls = objectToArray(polls).filter(
-    (poll) => !answeredPolls.includes(poll)
+    (poll) => !answeredPolls.includes(poll)// && !myPolls.includes(poll.id)
   );
   return { notAnsweredPolls, answeredPolls };
 }

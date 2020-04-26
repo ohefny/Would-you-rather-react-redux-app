@@ -4,7 +4,7 @@ import PollContainer,{PREVIEW} from './PollContainer'
 export default class PollsList extends Component {
   render() {
     return (
-      <ul>
+      <ul className='dashboard-list'>
         {this.props.polls.map((poll) => (
           <li key={poll.id}><PollContainer id={poll.id} content={PREVIEW}/></li> //todo make proper mapping
         ))}

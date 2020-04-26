@@ -3,12 +3,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class PollPreview extends Component {
+  //todo navigate to poll screen
+  openPoll = (e) => {
+    e.preventDefault();
+  };
   render() {
     return (
-      <div>
-        <h2>{this.props.preview.title}</h2>
+      <div className="preview">
+        <h4>{this.props.preview.title}</h4>
         <p>{this.props.preview.preview}</p>
-        <br/>
+        <button className="btn" onClick={this.openPoll}>
+          View Poll
+        </button>
       </div>
     );
   }
