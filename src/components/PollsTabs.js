@@ -8,18 +8,40 @@ class PollsTabs extends Component {
     this.state = { content: NOT_ANSWERED };
   }
   updateContent = (content) => {
-      this.setState({ content })
-    };
+    this.setState({ content });
+  };
 
   render() {
     return (
-      <div className="tab">
-        <button className="tablinks" onClick={()=>this.updateContent(NOT_ANSWERED)}>
-          Unanswered Questions
-        </button>
-        <button className="tablinks" onClick={()=>this.updateContent(ANSWERED)}>
-          Answered Questions
-        </button>
+      <div className="tabsContainer">
+        <div className="tabs">
+          <span
+            style={
+              this.state.content === NOT_ANSWERED
+                ? { fontWeight: "bold" }
+                : { fontWeight: "normal" }
+            }
+            className="tablinks"
+            onClick={(e) => {
+              e.preventDefault();
+              this.updateContent(NOT_ANSWERED);
+            }}>
+            Unanswered Questions
+          </span>
+          <span
+            style={
+              this.state.content === ANSWERED
+                ? { fontWeight: "bold" }
+                : { fontWeight: "normal" }
+            }
+            className="tablinks"
+            onClick={(e) => {
+              e.preventDefault();
+              this.updateContent(ANSWERED);
+            }}>
+            Answered Questions
+          </span>
+        </div>
         <PollsList
           polls={
             this.state.content === ANSWERED
@@ -39,7 +61,7 @@ function mapStateToProps({ authedUser, users, polls }) {
     (id) => polls[id]
   );
   const notAnsweredPolls = objectToArray(polls).filter(
-    (poll) => !answeredPolls.includes(poll)// && !myPolls.includes(poll.id)
+    (poll) => !answeredPolls.includes(poll) // && !myPolls.includes(poll.id)
   );
   return { notAnsweredPolls, answeredPolls };
 }

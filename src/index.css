@@ -15,6 +15,44 @@ a {
   height: auto;
   margin:  0 auto;
 }
+.tabs{
+  display: flex;
+  width: 500px;
+  height: auto;
+  align-items: center;
+  margin: 0 40px 0 20px;
+  border-radius: 10px;
+}
+.tabs > .tablinks{
+padding: 0;
+border: none;
+background: none;
+cursor: pointer;
+padding: 20px 20px 20px 20px;
+margin: 0 20px 0 20px;
+font-size: 16px;
+}
+
+.tabs > .tablinks:focus {
+  outline: none;
+background: none;
+}
+.tabs :first-child {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 0 0 20px;
+  border-right: 2px solid rgb(20, 111, 104);
+
+}
+.tabsContainer{
+  display: block;
+  max-width: 550px;
+  background-color: rgb(221, 221, 221);
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 10px;
+}
 .pollContainer{
   display: flex;
   max-width: 500px;
