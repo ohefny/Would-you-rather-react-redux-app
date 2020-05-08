@@ -13,8 +13,9 @@ class Dashboard extends Component {
     this.props.dispatch(setAuthedUser("tylermcginnis"));
   }
   render() {
+     //todo render content based on current link
     return this.props.polls && Object.keys(this.props.polls).length > 0 ? (
-      <div>
+      <div id="dashboard">
         <Header />
         <PollsTabs polls={this.props.polls} />
       </div>

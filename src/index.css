@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +9,9 @@ body {
 a {
   text-decoration: none;
   color: #252525;
+}
+.polls_tabs{
+  width: 500px;
 }
 .preview{
   display: block;
@@ -48,7 +52,7 @@ background: none;
 .tabsContainer{
   display: block;
   max-width: 550px;
-  background-color: rgb(221, 221, 221);
+  background-color: #f8f9fa;
   align-items: center;
   margin: 0 auto;
   border-radius: 10px;
@@ -65,7 +69,7 @@ background: none;
 }
 .author{
   display: block;
-  width: auto;
+  width: 150px;
   height: auto;
   padding: 0 20px 0 0;
   margin: 0 0 0 20px;
@@ -156,4 +160,34 @@ li {
   padding: 10px;
   font-size: 15px;
   height: 100px;
+}
+.headerContainer{
+  max-width: 800px;
+  display: block;
+  margin: 10px auto;
+}
+.headerContainer > ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  background: none;
+}
+
+.headerContainer li {
+  float: left;
+}
+
+.headerContainer li a {
+  display: block;
+  color: black;
+  text-align: center;
+  border-right: 1px solid;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.headerContainer li a:hover {
+  text-decoration: underline;
 }

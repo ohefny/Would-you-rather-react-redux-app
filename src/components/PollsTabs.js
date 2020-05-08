@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import PollsList from "./PollsList";
 import { connect } from "react-redux";
 import { objectToArray } from "./ui_mappers";
+import { Tabs, Tab } from "react-bootstrap/";
 class PollsTabs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { content: NOT_ANSWERED };
-  }
   updateContent = (content) => {
     this.setState({ content });
   };
@@ -14,47 +11,22 @@ class PollsTabs extends Component {
   render() {
     return (
       <div className="tabsContainer">
-        <div className="tabs">
-          <span
-            style={
-              this.state.content === NOT_ANSWERED
-                ? { fontWeight: "bold" }
-                : { fontWeight: "normal" }
-            }
-            className="tablinks"
-            onClick={(e) => {
-              e.preventDefault();
-              this.updateContent(NOT_ANSWERED);
-            }}>
-            Unanswered Questions
-          </span>
-          <span
-            style={
-              this.state.content === ANSWERED
-                ? { fontWeight: "bold" }
-                : { fontWeight: "normal" }
-            }
-            className="tablinks"
-            onClick={(e) => {
-              e.preventDefault();
-              this.updateContent(ANSWERED);
-            }}>
-            Answered Questions
-          </span>
-        </div>
-        <PollsList
-          polls={
-            this.state.content === ANSWERED
-              ? this.props.answeredPolls
-              : this.props.notAnsweredPolls
-          }
-        />
+        <Tabs className="d-flex justify-content-center"
+          defaultActiveKey="unanswered"
+          transition={false}
+          id="polls_tabs"
+        >
+          <Tab eventKey="unanswered" title="UnAnswered">
+            <PollsList polls={this.props.answeredPolls} />
+          </Tab>
+          <Tab eventKey="answered" title="Answered">
+            <PollsList polls={this.props.notAnsweredPolls} />
+          </Tab>
+        </Tabs>
       </div>
     );
   }
 }
-const ANSWERED = 0;
-const NOT_ANSWERED = 1;
 function mapStateToProps({ authedUser, users, polls }) {
   //const myPolls = users[authedUser].questions;
   const answeredPolls = Object.keys(users[authedUser].answers).map(
