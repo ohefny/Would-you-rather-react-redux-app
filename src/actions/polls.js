@@ -1,10 +1,10 @@
-import { getQuestions, createQuestion, answerQuestion } from "../api";
+import { createQuestion, answerQuestion } from "../api";
 
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
 export const ADD_POLL = "ADD_POLL"; //todo see how we did create tweet in previous project
 export const ANSWER_POLL = "ANSWER_POLL"; // todo how we did tweet reply
 
-function receivePolls(polls) {
+export function receivePolls(polls) {
   return {
     type: RECEIVE_POLLS,
     polls,
@@ -20,11 +20,6 @@ function answerPoll(pollID, answerOption, userID) {
   return {
     type: ANSWER_POLL,
     answer:{ pollID, answerOption, userID },
-  };
-}
-export function handleReceivePolls() {
-  return (dispatch) => {
-    getQuestions().then((polls) => dispatch(receivePolls(polls)));
   };
 }
 export function handleCreatePoll(optionOneText, optionTwoText) {

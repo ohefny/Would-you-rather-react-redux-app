@@ -1,4 +1,4 @@
-import { getPreviewUIModel } from "./ui_mappers";
+import { getPreviewUIModel } from "../ui_mappers";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'

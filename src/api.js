@@ -13,3 +13,12 @@ export function createQuestion(questionData){  //{ optionOneText, optionTwoText,
 export function answerQuestion(answerData){ //{ authedUser, qid, answer }
     return _saveQuestionAnswer(answerData)
 }
+export function getInitialData () {
+    return Promise.all([
+      _getUsers(),
+      _getQuestions(),
+    ]).then(([users, questions]) => ({
+      users,
+      questions,
+    }))
+  }

@@ -1,39 +1,44 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Dashboard from "./Dashboard";
 import Header from "./Header";
 
 import Login from "./Login";
+import NotFoundPage from "./NotFoundPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { setAuthedUser } from "../actions/authedUser";
-import { handleReceiveUsers } from "../actions/users";
-import { handleReceivePolls } from "../actions/polls";
-import PollCreation from "./PollCreation";
-import PollPage from "./PollPage";
+import { handleInitialData } from "../actions/shared";
+import PollCreation from "./Poll/PollCreation";
+import PollPage from "./Poll/PollPage";
 import LeaderBoard from "./LeaderBoard";
+import LoadingBar from "react-redux-loading";
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleReceiveUsers());
-    this.props.dispatch(handleReceivePolls());
-    this.props.dispatch(setAuthedUser("tylermcginnis"));
+    this.props.dispatch(handleInitialData());
   }
   render() {
     return (
       <Router>
-        <div className="App">
-          {this.props.authedUser === null ? (
-            <Route render={() => <Login />} />
-          ) : this.props.users[this.props.authedUser] ? (
-            AppContent()
-          ) : (
-            <div>Loading...</div>
-          )}
-        </div>
+        <Fragment>
+          <LoadingBar />
+          <div className="App">{this.getLoginOrAppContent()}</div>
+        </Fragment>
       </Router>
     );
     /*     return <Dashboard />; //this.props.authedUser ? <Dashboard /> : <Login />; */
   }
+
+  getLoginOrAppContent = () => {
+    console.log("intialized", this.props.initialized);
+    console.log("isLoggedIn", this.props.isLoggedIn);
+    if (this.props.initialized) {
+      if (this.props.isLoggedIn) {
+        return AppContent();
+      } else {
+        return <Route path="/login" exact component={Login} />;
+      }
+    } else return null;
+  };
 }
 function AppContent() {
   return (
@@ -41,17 +46,25 @@ function AppContent() {
       <div className="container">
         <Header />
         <div>
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/poll/:id" component={PollPage} />
-          <Route path="/new" component={PollCreation} />
-          <Route path="/leaders" component={LeaderBoard} />
+          <Router>
+            <Switch>
+              <Route path="/login" exact component={Login} />;
+              <Route path="/" exact component={Dashboard} />
+              <Route path="/poll/:id" component={PollPage} />
+              <Route path="/new" component={PollCreation} />
+              <Route path="/leaders" component={LeaderBoard} />
+              <Route path="*" component={NotFoundPage} />
+            </Switch>
+          </Router>
         </div>
       </div>
     </Fragment>
   );
 }
-function mapStateToProps({ authedUser, users, polls }) {
-  console.log(users);
-  return { authedUser, users, polls };
+function mapStateToProps({ authedUser, users }) {
+  return {
+    isLoggedIn: authedUser != null,
+    initialized: Object.keys(users).length > 0,
+  };
 }
 export default connect(mapStateToProps)(App);

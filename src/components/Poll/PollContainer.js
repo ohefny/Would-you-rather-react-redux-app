@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PollContent from "./PollContent";
 import PollPreview from "./PollPreview";
 import PollStats from "./PollStats";
-import { objectToArray } from "./ui_mappers";
+import { objectToArray } from "../ui_mappers";
 class PollContainer extends Component {
   render() {
     return (
@@ -37,7 +37,6 @@ class PollContainer extends Component {
   };
 }
 function mapStateToProps({ users }, { id }) {
-  console.log(users);
   const { name, avatarURL } = objectToArray(users).find((user) =>
     user.questions.includes(id)
   );

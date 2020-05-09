@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PollContainer,{PREVIEW} from './PollContainer'
+import PollContainer,{PREVIEW} from './Poll/PollContainer'
 //doesn't need accessing the store it only needs to render the list
 export default class PollsList extends Component {
   render() {

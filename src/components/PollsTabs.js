@@ -18,10 +18,10 @@ class PollsTabs extends Component {
           id="polls_tabs"
         >
           <Tab eventKey="unanswered" title="UnAnswered">
-            <PollsList polls={this.props.answeredPolls} />
+            <PollsList polls={this.props.notAnsweredPolls} />
           </Tab>
           <Tab eventKey="answered" title="Answered">
-            <PollsList polls={this.props.notAnsweredPolls} />
+            <PollsList polls={this.props.answeredPolls} />
           </Tab>
         </Tabs>
       </div>
