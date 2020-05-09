@@ -1,11 +1,14 @@
 import { getPreviewUIModel } from "./ui_mappers";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
+
 
 class PollPreview extends Component {
   //todo navigate to poll screen
   openPoll = (e) => {
     e.preventDefault();
+    this.props.history.push(`/poll/${this.props.id}`)
   };
   render() {
     return (
@@ -22,6 +25,6 @@ class PollPreview extends Component {
 
 function mapStateToProps({ polls }, { id }) {
   const preview = getPreviewUIModel(polls[id]);
-  return { preview };
+  return { preview ,id};
 }
-export default connect(mapStateToProps)(PollPreview);
+export default withRouter(connect(mapStateToProps)(PollPreview));

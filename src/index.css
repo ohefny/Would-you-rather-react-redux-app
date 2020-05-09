@@ -17,30 +17,20 @@ a {
   display: block;
   width: auto;
   height: auto;
-  margin:  0 auto;
+  margin:  20px auto;
 }
-.tabs{
-  display: flex;
-  width: 500px;
-  height: auto;
-  align-items: center;
-  margin: 0 40px 0 20px;
-  border-radius: 10px;
-}
-.tabs > .tablinks{
-padding: 0;
-border: none;
-background: none;
-cursor: pointer;
-padding: 20px 20px 20px 20px;
-margin: 0 20px 0 20px;
-font-size: 16px;
+.pollContent{
+  margin: 30px;
 }
 
-.tabs > .tablinks:focus {
-  outline: none;
-background: none;
-}
+.tabs  > a {
+  background-color: #f8f9fa;
+  color: #128496;
+} 
+.tabs  > a:hover{
+  background-color: #f8f9fa;
+  color: #128496;
+} 
 .tabs :first-child {
   display: block;
   width: auto;
@@ -65,7 +55,7 @@ background: none;
   align-items: center;
   margin: 0 auto;
   border-radius: 10px;
-  border: 1px solid rgb(35, 196, 182);
+  border: 1px solid #128496;
 }
 .author{
   display: block;
@@ -73,7 +63,7 @@ background: none;
   height: auto;
   padding: 0 20px 0 0;
   margin: 0 0 0 20px;
-  border-right: 2px solid rgb(20, 111, 104);
+  border-right: 2px solid #128496;
 }
 .author img{
   display:block;
@@ -96,7 +86,7 @@ background: none;
   text-align: center;
   margin: 35px auto;
   padding: 5px;
-  border: 1px solid rgba(5, 160, 147);
+  border: 1px solid #128496;
   cursor: pointer;
   background: rgb(255, 255, 255);
   font-size: 16px;
@@ -108,7 +98,7 @@ background: none;
 .btn:hover {
   border-width: 2px;
   color: rgba(1, 48, 44);
-  border-color: rgba(3, 116, 106);
+  border-color: #128496;
   text-decoration: none;
 }
 

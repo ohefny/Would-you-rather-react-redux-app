@@ -10,11 +10,11 @@ class Header extends Component {
         <div className="headerContainer">
           <Navbar bg="light" variant="light">
             <Nav className="mr-auto" activeKey="home" defaultActiveKey="home">
-              <Nav.Link eventKey="home" href="/home">
+              <Nav.Link eventKey="home" href="/">
                 Home
               </Nav.Link>
-              <Nav.Link eventKey="features" href="/features">
-                Features
+              <Nav.Link eventKey="new" href="/new">
+                Create Poll
               </Nav.Link>
               <Nav.Link eventKey="leaders" href="/leaders">
                 Leader Board

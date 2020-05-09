@@ -11,7 +11,8 @@ class PollsTabs extends Component {
   render() {
     return (
       <div className="tabsContainer">
-        <Tabs className="d-flex justify-content-center"
+        <Tabs
+          className="tabs d-flex justify-content-center"
           defaultActiveKey="unanswered"
           transition={false}
           id="polls_tabs"

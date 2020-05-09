@@ -17,7 +17,7 @@ class PollContent extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="pollContent">
         <Form key="optionOne" className="mb-3">
           <Form.Label style={{ fontSize: "22px", fontWeight: "700" }}>
             Would You Rather ...
@@ -27,18 +27,18 @@ class PollContent extends Component {
             onChange={(e) => this.onChoiceChanged(e, 1)}
             type="radio"
             id="optionOne"
-            label={this.props.optionOne.text}
+            label={this.props.optionOneText}
           />
           <Form.Check
             checked={this.state.checkedOption === 2}
             onChange={(e) => this.onChoiceChanged(e, 2)}
             type="radio"
-            label={this.props.optionOne.text}
+            label={this.props.optionTwoText}
             id="optionTwo"
           />
           <Button
             onClick={this.onSubmitClicked}
-            variant="primary"
+            variant="info"
             type="submit"
             style={{ height: "40px" }}
           >
