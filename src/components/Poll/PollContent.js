@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap/";
+import { handleAnswerPoll } from "../../actions/polls";
+import { showLoading, hideLoading } from "react-redux-loading";
 class PollContent extends Component {
   constructor(props) {
     super(props);
@@ -9,10 +11,16 @@ class PollContent extends Component {
     };
   }
   onSubmitClicked = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    const { dispatch, id } = this.props;
+    const optionID = this.state.checkedOption === 1 ? "optionOne" : "optionTwo";
+    dispatch(showLoading());
+    dispatch(handleAnswerPoll(id, optionID));
+    setTimeout(() => {
+      dispatch(hideLoading())
+    }, 1000);
   };
   onChoiceChanged = (e, option) => {
-    //e.preventDefault()
     this.setState({ checkedOption: option });
   };
   render() {

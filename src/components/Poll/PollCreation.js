@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap/";
 import { handleCreatePoll } from "../../actions/polls";
 import { Redirect } from "react-router-dom";
+import { showLoading, hideLoading } from "react-redux-loading";
 
 class PollCreation extends Component {
   state = {
@@ -18,8 +19,10 @@ class PollCreation extends Component {
     const optionOne = this.optionOneTxtInput.current.value;
     const optionTwo = this.optionTwoTxtInput.current.value;
     this.props.dispatch(handleCreatePoll(optionOne, optionTwo));
+    this.props.dispatch(showLoading());
 
     setTimeout(() => {
+      this.props.dispatch(hideLoading());
       this.setState({ redirectToHome: true });
     }, 1000);
   };
