@@ -58,3 +58,6 @@ function mapUserToLeader({ name, avatarURL, answers, questions }) {
 
 const getScore = (user) =>
   user.questions.length + Object.keys(user.answers).length;
+
+
+  

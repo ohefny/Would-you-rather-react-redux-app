@@ -9,7 +9,7 @@ class PollContent extends Component {
     };
   }
   onSubmitClicked = (e) => {
-    //todo call dispatcher with proper action
+    e.preventDefault()
   };
   onChoiceChanged = (e, option) => {
     //e.preventDefault()

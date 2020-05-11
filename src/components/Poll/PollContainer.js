@@ -3,20 +3,13 @@ import { connect } from "react-redux";
 import PollContent from "./PollContent";
 import PollPreview from "./PollPreview";
 import PollStats from "./PollStats";
+import UserCard from "../UserCard"
 import { objectToArray } from "../ui_mappers";
 class PollContainer extends Component {
   render() {
     return (
       <div className="pollContainer">
-        <div className="author">
-          <img
-            src={this.props.avatarURL}
-            alt={`Avatar of ${this.props.name}`}
-            className="avatar"
-          />
-          <h5>{this.getHeaderText()}</h5>
-        </div>
-
+        <UserCard name={this.props.name} avatarURL={this.props.avatarURL}/>
         {this.getContent()}
       </div>
     );
@@ -31,10 +24,14 @@ class PollContainer extends Component {
         return <PollContent id={this.props.id} />;
     }
   };
-  getHeaderText = () => {
-    if (this.props.content === RESULT) return `${this.props.name}`;
-    else return `${this.props.name}`;
-  };
+  
+
+  UserCard() {
+    return <div className="author">
+      <img src={this.props.avatarURL} alt={`Avatar of ${this.props.name}`} className="avatar" />
+      <h5>{this.getHeaderText()}</h5>
+    </div>;
+  }
 }
 function mapStateToProps({ users }, { id }) {
   const { name, avatarURL } = objectToArray(users).find((user) =>

@@ -12,9 +12,10 @@ import PollCreation from "./Poll/PollCreation";
 import PollPage from "./Poll/PollPage";
 import LeaderBoard from "./LeaderBoard";
 import LoadingBar from "react-redux-loading";
+import NotValidPoll from "./NotValidPoll";
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    if (!this.props.initialized) this.props.dispatch(handleInitialData());
   }
   render() {
     return (
@@ -35,28 +36,26 @@ class App extends Component {
       if (this.props.isLoggedIn) {
         return AppContent();
       } else {
-        return <Route path="/login" exact component={Login} />;
+        return <Route render={() => <Login />} />;
       }
     } else return null;
   };
 }
 function AppContent() {
   return (
-    <Fragment id="dashboard">
+    <Fragment key="dashboard">
       <div className="container">
-        <Header />
-        <div>
-          <Router>
-            <Switch>
-              <Route path="/login" exact component={Login} />;
-              <Route path="/" exact component={Dashboard} />
-              <Route path="/poll/:id" component={PollPage} />
-              <Route path="/new" component={PollCreation} />
-              <Route path="/leaders" component={LeaderBoard} />
-              <Route path="*" component={NotFoundPage} />
-            </Switch>
-          </Router>
-        </div>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/poll/:id" exact component={PollPage} />
+            <Route path="/new" exact component={PollCreation} />
+            <Route path="/leaders" exact component={LeaderBoard} />
+            <Route path="/not_valid_id" exact component={NotValidPoll} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </Router>
       </div>
     </Fragment>
   );

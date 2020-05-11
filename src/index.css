@@ -57,6 +57,16 @@ a {
   border-right: 2px solid rgb(20, 111, 104);
 
 }
+.form{
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #128496;
+  background-color: #f8f9fa;
+
+}
+.form-text{
+  font-size: 20px;
+}
 .tabsContainer{
   display: block;
   max-width: 550px;
@@ -65,9 +75,32 @@ a {
   margin: 0 auto;
   border-radius: 10px;
 }
+.signin-card{
+  width: 400px;
+}
+.table{
+  margin: 20px;
+}
+.table-info{
+  background-color: transparent;
+}
+.chosen-card-header:first-child{
+  background-color: #128496;
+  color: #fff;
+}
 .pollContainer{
   display: flex;
   max-width: 500px;
+  flex-direction: row;
+  background-color: #fff;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid #128496;
+}
+.leaderContainer{
+  display: flex;
+  max-width: 400px;
   flex-direction: row;
   background-color: #fff;
   align-items: center;

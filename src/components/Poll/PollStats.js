@@ -8,11 +8,10 @@ class PollStats extends Component {
     const { optionOne, optionTwo } = this.props;
     return (
       <div>
-        <Card>
-          <Card.Header>
+        <Card >
+          <Card.Header className={optionOne.isChosen? "chosen-card-header" : null}>
             {optionOne.text}
-            {optionOne.isChosen ? this.selectedIcon() : null}
-          </Card.Header>
+          </Card.Header >
           <Card.Body>
             <ProgressBar
               variant="info"
@@ -23,9 +22,8 @@ class PollStats extends Component {
           </Card.Body>
         </Card>
         <Card>
-          <Card.Header>
+          <Card.Header className={optionTwo.isChosen? "chosen-card-header" : null}>
             {optionTwo.text}
-            {optionTwo.isChosen ? this.selectedIcon() : null}
           </Card.Header>
           <Card.Body>
             <ProgressBar
@@ -40,15 +38,8 @@ class PollStats extends Component {
     );
   }
 
-  selectedIcon() {
-    return (
-      <img
-        alt="chosen poll"
-        src="https://cdn.pixabay.com/photo/2017/09/29/00/30/checkmark-icon-2797531_1280.png"
-      />
-    );
-  }
 }
+
 
 function mapStateToProps({ authedUser, polls }, { id }) {
   return getPollStatsUIModel(polls[id], authedUser);

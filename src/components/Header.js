@@ -1,39 +1,70 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Navbar, Nav } from "react-bootstrap/";
+import { Navbar, Nav,NavItem } from "react-bootstrap/";
+import { withRouter,Link } from "react-router-dom";
+import { setAuthedUser } from "../actions/authedUser";
 
 class Header extends Component {
+  componentDidMount() {
+    console.log("Header mounted");
+  }
+  componentDidUpdate() {
+    console.log("Header updated");
+  }
+  onSignOut = (e) => {
+    e.preventDefault();
+    this.props.dispatch(setAuthedUser(null));
+  };
   render() {
-    console.log(this.props)
     return (
-      <>
-        <div className="headerContainer">
-          <Navbar bg="light" variant="light">
-            <Nav className="mr-auto" activeKey="home" defaultActiveKey="home">
-              <Nav.Link eventKey="home" href="/">
+      <div className="headerContainer">
+        <Navbar bg="light" variant="light">
+          <Nav
+            className="mr-auto"
+            activeKey={this.getLocationKey()}
+            defaultActiveKey="home"
+          >
+            <NavItem href="/">
+              <Nav.Link eventKey="home" as={Link} to="/">
                 Home
               </Nav.Link>
-              <Nav.Link eventKey="new" href="/new">
-                Create Poll
+            </NavItem>
+            <NavItem href="/new">
+              <Nav.Link eventKey="new" as={Link} to="/new">
+              Create Poll
               </Nav.Link>
-              <Nav.Link eventKey="leaders" href="/leaders">
-                Leader Board
+            </NavItem>
+            <NavItem href="/leaders">
+              <Nav.Link eventKey="leaders" as={Link} to="/leaders">
+              Leader Board
               </Nav.Link>
-            </Nav>
-            <Nav inline>
+            </NavItem>
+          </Nav>
+          <Nav>
+            {this.props.isLoggedIn ? (
               <Navbar.Text>
-                {this.props.name} | <a href="#login">Sign out</a>
+                {this.props.name} |{" "}
+                <a onClick={this.onSignOut} href="#login">
+                  Sign out
+                </a>
               </Navbar.Text>
-            </Nav>
-          </Navbar>
-        </div>
-      </>
+            ) : null}
+          </Nav>
+        </Navbar>
+      </div>
     );
   }
+  getLocationKey() {
+    const location = this.props.location.pathname;
+    if (location === "/new/" || location === "/new") return "new";
+    if (location === "/leaders/" || location === "/leaders") return "leaders";
+    else return "home";
+  }
 }
-
 function mapStateToProps({ users, authedUser }) {
-  const { name, avatarURL } = users[authedUser]
-  return { name, avatarURL };
+  if (authedUser) {
+    const { name, avatarURL } = users[authedUser];
+    return { isLoggedIn: true, name, avatarURL };
+  } else return { isLoggedIn: false };
 }
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
