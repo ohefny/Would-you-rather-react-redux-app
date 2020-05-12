@@ -12,7 +12,7 @@ import PollCreation from "./Poll/PollCreation";
 import PollPage from "./Poll/PollPage";
 import LeaderBoard from "./LeaderBoard";
 import LoadingBar from "react-redux-loading";
-import NotValidPoll from "./NotValidPoll";
+import NotValidPoll from "./Poll/NotValidPoll";
 class App extends Component {
   componentDidMount() {
     if (!this.props.initialized) this.props.dispatch(handleInitialData());
