@@ -22,11 +22,11 @@ class App extends Component {
       <Router>
         <Fragment>
           <LoadingBar />
+          <Header />
           <div className="App">{this.getLoginOrAppContent()}</div>
         </Fragment>
       </Router>
     );
-    /*     return <Dashboard />; //this.props.authedUser ? <Dashboard /> : <Login />; */
   }
 
   getLoginOrAppContent = () => {
@@ -45,17 +45,14 @@ function AppContent() {
   return (
     <Fragment key="dashboard">
       <div className="container">
-        <Router>
-          <Header />
-          <Switch>
-            <Route path="/" exact component={Dashboard} />
-            <Route path="/poll/:id" exact component={PollPage} />
-            <Route path="/new" exact component={PollCreation} />
-            <Route path="/leaders" exact component={LeaderBoard} />
-            <Route path="/not_valid_id" exact component={NotValidPoll} />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route path="/" exact component={Dashboard} />
+          <Route path="/poll/:id" exact component={PollPage} />
+          <Route path="/new" exact component={PollCreation} />
+          <Route path="/leaders" exact component={LeaderBoard} />
+          <Route path="/not_valid_id" exact component={NotValidPoll} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
     </Fragment>
   );
