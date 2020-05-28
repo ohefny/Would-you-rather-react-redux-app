@@ -10,6 +10,10 @@ A Web app to simulate a would you rather game in which you:
 <li> Logout </li>
 </ul>
 
+# Screenshots
+ <img src="/screenshots/android/1.png" width="500" heigh="300"/> <img src="/screenshots/android/2.png" width="500" heigh="300"/> <img src="/screenshots/android/4.png"  width="500" heigh="300"/> <img src="/screenshots/android/5.png"  width="500" heigh="300"/> <img src="/screenshots/android/6.png" width="500" heigh="300"/>
+
+
 ## Tools
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 React, Redux, React Router, Redux Thunk and React bootstrap
