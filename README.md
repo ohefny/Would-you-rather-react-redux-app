@@ -19,6 +19,7 @@ A Web app to simulate a would you rather game in which you:
  <img src="/screenshots/5.png"  width="450" heigh="300"/> 
  <img src="/screenshots/1.png" width="450" heigh="300"/> 
 </p>
+
 ## Tools
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 React, Redux, React Router, Redux Thunk and React bootstrap
