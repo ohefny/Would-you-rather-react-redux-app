@@ -1,3 +1,4 @@
+# Would You Rather
 A Web app to simulate a would you rather game in which you:
 <ul>
 <li> Login with specific users </li>
