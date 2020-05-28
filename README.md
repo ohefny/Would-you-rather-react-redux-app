@@ -11,7 +11,7 @@ A Web app to simulate a would you rather game in which you:
 
 ## Tools
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+React, Redux, React Router, Redux Thunk and React bootstrap
 
 ## Available Scripts
 
