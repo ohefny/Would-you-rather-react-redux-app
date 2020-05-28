@@ -11,7 +11,7 @@ A Web app to simulate a would you rather game in which you:
 </ul>
 
 # Screenshots
- <img src="/screenshots/android/1.png" width="500" heigh="300"/> <img src="/screenshots/android/2.png" width="500" heigh="300"/> <img src="/screenshots/android/4.png"  width="500" heigh="300"/> <img src="/screenshots/android/5.png"  width="500" heigh="300"/> <img src="/screenshots/android/6.png" width="500" heigh="300"/>
+ <img src="/screenshots/1.png" width="500" heigh="300"/> <img src="/screenshots/2.png" width="500" heigh="300"/> <img src="/screenshots/4.png"  width="500" heigh="300"/> <img src="/screenshots/5.png"  width="500" heigh="300"/> <img src="/screenshots/6.png" width="500" heigh="300"/>
 
 
 ## Tools
