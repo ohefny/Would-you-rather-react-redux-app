@@ -1,12 +1,12 @@
 A Web app to simulate a would you rather game in which you:
 <ul>
-<li> Login with specific users <li>
-<li> View all your answered polls<li>
-<li> View all unanswered polls<li>
-<li> Choose any of the polls to answer<li>
-<li> See the total votes for each poll<li>
+<li> Login with specific users </li>
+<li> View all your answered polls</li>
+<li> View all unanswered polls</li>
+<li> Choose any of the polls to answer</li>
+<li> See the total votes for each poll</li>
 <li> View the leaderboard where top three users who created or answered polls </li>
-  <li> Logout </li>
+<li> Logout </li>
 </ul>
 
 ## Tools
